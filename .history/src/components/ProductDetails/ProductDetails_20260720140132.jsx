@@ -3,19 +3,17 @@ import { useLoaderData } from "react-router";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const ProductDetails = () => {
-  const { _id } = useLoaderData();
+  const product = useLoaderData();
   const bidModalRef = useRef(null);
   const { user } = use(AuthContext);
+
+  console.log(product);
 
   const handleBidModalOpen = () => {
     bidModalRef.current.showModal();
   };
   const handleBidSubmit = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const bid = e.target.bid.value;
-    console.log(_id, name, email, bid);
   };
   return (
     <div>
@@ -38,7 +36,6 @@ const ProductDetails = () => {
                   <label className="label">Name</label>
                   <input
                     type="text"
-                    name="name"
                     className="input"
                     readOnly
                     defaultValue={user.displayName}
@@ -48,21 +45,12 @@ const ProductDetails = () => {
                   <input
                     type="email"
                     className="input"
-                    name="email"
-                    readOnly
-                    defaultValue={user.email}
+                    defaultValue={user.}
                   />
-                  {/* bid amount */}
-                  <label className="label">Bid</label>
-                  <input
-                    type="text"
-                    className="input"
-                    name="bid"
-                    placeholder="Your Bid"
-                  />
-                  <button className="btn btn-neutral mt-4">
-                    Please your bid
-                  </button>
+                  <div>
+                    <a className="link link-hover">Forgot password?</a>
+                  </div>
+                  <button className="btn btn-neutral mt-4">Login</button>
                 </fieldset>
               </form>
               <div className="modal-action">

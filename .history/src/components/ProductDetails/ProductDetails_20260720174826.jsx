@@ -3,9 +3,11 @@ import { useLoaderData } from "react-router";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const ProductDetails = () => {
-  const { _id } = useLoaderData();
+  const  = useLoaderData();
   const bidModalRef = useRef(null);
   const { user } = use(AuthContext);
+
+  console.log(product);
 
   const handleBidModalOpen = () => {
     bidModalRef.current.showModal();
@@ -15,7 +17,7 @@ const ProductDetails = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const bid = e.target.bid.value;
-    console.log(_id, name, email, bid);
+    console.log(name, email, bid);
   };
   return (
     <div>

@@ -1,21 +1,17 @@
-import React, { use, useRef } from "react";
+import React, { useRef } from "react";
 import { useLoaderData } from "react-router";
-import { AuthContext } from "../../contexts/AuthContext";
 
 const ProductDetails = () => {
-  const { _id } = useLoaderData();
+  const product = useLoaderData();
   const bidModalRef = useRef(null);
-  const { user } = use(AuthContext);
+  console.log(product);
 
   const handleBidModalOpen = () => {
     bidModalRef.current.showModal();
-  };
-  const handleBidSubmit = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const bid = e.target.bid.value;
-    console.log(_id, name, email, bid);
+
+    const handleBidSubmit = (e)=>{
+      e.preventDefault
+    }
   };
   return (
     <div>
@@ -33,36 +29,20 @@ const ProductDetails = () => {
             <div className="modal-box">
               <h3 className="font-bold text-lg">Give the best offer!</h3>
               <p className="py-4">Offer something seller can not resist!</p>
-              <form onSubmit={handleBidSubmit}>
+              <form onSubmit={}>
                 <fieldset className="fieldset">
-                  <label className="label">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="input"
-                    readOnly
-                    defaultValue={user.displayName}
-                  />
-                  {/* email */}
                   <label className="label">Email</label>
+                  <input type="email" className="input" placeholder="Email" />
+                  <label className="label">Password</label>
                   <input
-                    type="email"
+                    type="password"
                     className="input"
-                    name="email"
-                    readOnly
-                    defaultValue={user.email}
+                    placeholder="Password"
                   />
-                  {/* bid amount */}
-                  <label className="label">Bid</label>
-                  <input
-                    type="text"
-                    className="input"
-                    name="bid"
-                    placeholder="Your Bid"
-                  />
-                  <button className="btn btn-neutral mt-4">
-                    Please your bid
-                  </button>
+                  <div>
+                    <a className="link link-hover">Forgot password?</a>
+                  </div>
+                  <button className="btn btn-neutral mt-4">Login</button>
                 </fieldset>
               </form>
               <div className="modal-action">
